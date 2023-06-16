@@ -18,13 +18,15 @@ router.get('/', async (req, res) => {
 // Route: POST /jobs
 // Create a new job
 router.post('/', async (req, res) => {
-  const { jobTitle, companyName, jobDescription } = req.body;
+  const { jobTitle, companyName, jobDescription, applicationDeadline, jobPostingURL } = req.body;
 
   try {
     const newJob = new Job({
       jobTitle,
       companyName,
       jobDescription,
+      applicationDeadline,
+      jobPostingURL
     });
 
     const savedJob = await newJob.save();
@@ -48,6 +50,8 @@ router.put('/:id', getJobById, async (req, res) => {
   if (jobTitle) res.job.jobTitle = jobTitle;
   if (companyName) res.job.companyName = companyName;
   if (jobDescription) res.job.jobDescription = jobDescription;
+  if (applicationDeadline) res.job.applicationDeadline = applicationDeadline;
+  if (jobPostingURL) res.job.jobPostingURL = jobPostingURL;
 
   try {
     const updatedJob = await res.job.save();

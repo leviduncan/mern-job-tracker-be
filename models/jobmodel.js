@@ -13,6 +13,14 @@ const jobSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  applicationDeadline:{
+    type: String,
+    required: false,
+  },
+  jobPostingURL: {
+    type: String,
+    required: true,
+  }
 });
 
 module.exports = mongoose.model('Job', jobSchema);

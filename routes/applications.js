@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
 // Route: POST /applications
 // Create a new application
 router.post('/', async (req, res) => {
-  const { jobTitle, companyName, applicationDate, applicationStatus } = req.body;
+  const { jobTitle, companyName, applicationDate, applicationStatus, applicationMethod, contactPerson, contactInformation, interviewDates, notes } = req.body;
 
   try {
     const newApplication = new Application({
@@ -26,6 +26,11 @@ router.post('/', async (req, res) => {
       companyName,
       applicationDate,
       applicationStatus,
+      applicationMethod,
+      contactPerson,
+      contactInformation, 
+      interviewDates, 
+      notes
     });
 
     const savedApplication = await newApplication.save();
@@ -44,12 +49,17 @@ router.get('/:id', getApplicationById, (req, res) => {
 // Route: PUT /applications/:id
 // Update a specific application by ID
 router.put('/:id', getApplicationById, async (req, res) => {
-  const { jobTitle, companyName, applicationDate, applicationStatus } = req.body;
+  const { jobTitle, companyName, applicationDate, applicationStatus, applicationMethod, contactPerson, contactInformation, interviewDates, notes } = req.body;
 
   if (jobTitle) res.application.jobTitle = jobTitle;
   if (companyName) res.application.companyName = companyName;
   if (applicationDate) res.application.applicationDate = applicationDate;
   if (applicationStatus) res.application.applicationStatus = applicationStatus;
+  if (applicationMethod) res.application.applicationMethod = applicationMethod;
+  if (contactPerson) res.application.contactPerson = contactPerson;
+  if (contactInformation) res.application.contactInformation = contactInformation;
+  if (interviewDates) res.application.interviewDates = interviewDates;
+  if (notes) res.application.notes = notes;
 
   try {
     const updatedApplication = await res.application.save();
