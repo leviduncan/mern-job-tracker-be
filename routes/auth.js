@@ -1,6 +1,6 @@
 const express = require('express');
-const router = express.Router();
 const bcrypt = require('bcryptjs');
+const router = express.Router();
 
 // Import the User model
 const User = require('../models/authmodel');

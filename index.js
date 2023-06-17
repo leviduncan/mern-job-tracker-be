@@ -16,7 +16,7 @@ const connectDB = require('./config/db');
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors('http:localhost'));
 app.use(express.json());
 app.use(bodyParser.json());
 
