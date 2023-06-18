@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser')
 
+const jwt = require('jsonwebtoken')
+
 // Import routes
 const jobsRoutes = require('./routes/jobs');
 const applicationsRoutes = require('./routes/applications');
@@ -19,7 +21,8 @@ const app = express();
 const corsOptions ={
   origin:'http://localhost:3000', 
   credentials:true,            //access-control-allow-credentials:true
-  optionSuccessStatus:200
+  optionSuccessStatus:200,
+  methods: ["GET", "POST", "PUT", "DELETE"]
 }
 app.use(cors(corsOptions));
 app.use(express.json());
