@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser')
 
+const app = express();
 app.use(cors());
 
 const jwt = require('jsonwebtoken')
@@ -17,7 +18,7 @@ const profileRoutes = require('./routes/profile');
 const userDashboardRoutes = require('./routes/userDashboard');
 const connectDB = require('./config/db');
 
-const app = express();
+
 
 // Middleware
 
